@@ -114,9 +114,72 @@ public class GameBoard {
     }
 
     public boolean checkForWin(String color) {
-        // need logic to check for a win
-        return false;
-    }
+        // Check horizontally
+        for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns - 3; j++) {
+        if (mainBoard[i][j] != null &&
+        mainBoard[i][j].getColor().equals(color) &&
+        mainBoard[i][j + 1] != null &&
+        mainBoard[i][j + 1].getColor().equals(color) &&
+        mainBoard[i][j + 2] != null &&
+        mainBoard[i][j + 2].getColor().equals(color) &&
+        mainBoard[i][j + 3] != null &&
+        mainBoard[i][j + 3].getColor().equals(color)) {
+        return true;
+        }
+        }
+        }
+
+        // Check vertically
+        for (int j = 0; j < columns; j++) {
+        for (int i = 0; i < rows - 3; i++) {
+        if (mainBoard[i][j] != null &&
+        mainBoard[i][j].getColor().equals(color) &&
+        mainBoard[i + 1][j] != null &&
+        mainBoard[i + 1][j].getColor().equals(color) &&
+        mainBoard[i + 2][j] != null &&
+        mainBoard[i + 2][j].getColor().equals(color) &&
+        mainBoard[i + 3][j] != null &&
+        mainBoard[i + 3][j].getColor().equals(color)) {
+        return true;
+        }
+        }
+        }
+
+        // Check diagonally (from bottom-left to top-right)
+        for (int i = 3; i < rows; i++) {
+        for (int j = 0; j < columns - 3; j++) {
+        if (mainBoard[i][j] != null &&
+        mainBoard[i][j].getColor().equals(color) &&
+        mainBoard[i - 1][j + 1] != null &&
+        mainBoard[i - 1][j + 1].getColor().equals(color) &&
+        mainBoard[i - 2][j + 2] != null &&
+        mainBoard[i - 2][j + 2].getColor().equals(color) &&
+        mainBoard[i - 3][j + 3] != null &&
+        mainBoard[i - 3][j + 3].getColor().equals(color)) {
+        return true;
+        }
+        }
+        }
+
+        // Check diagonally (from top-left to bottom-right)
+        for (int i = 0; i < rows - 3; i++) {
+        for (int j = 0; j < columns - 3; j++) {
+        if (mainBoard[i][j] != null &&
+        mainBoard[i][j].getColor().equals(color) &&
+        mainBoard[i + 1][j + 1] != null &&
+        mainBoard[i + 1][j + 1].getColor().equals(color) &&
+        mainBoard[i + 2][j + 2] != null &&
+        mainBoard[i + 2][j + 2].getColor().equals(color) &&
+        mainBoard[i + 3][j + 3] != null &&
+        mainBoard[i + 3][j + 3].getColor().equals(color)) {
+        return true;
+        }
+        }
+        }
+
+        return false; // No win found
+        }
 
     public boolean isBoardFull() {
         // need logic to check for win
